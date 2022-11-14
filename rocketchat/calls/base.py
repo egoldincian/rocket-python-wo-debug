@@ -113,16 +113,9 @@ class RocketChatBase(object):
             'files': self.files
         }
 
-        logger.debug('API Request - {request}'.format(
-            request=pprint.pformat(request_data)
-        ))
-
         result.raise_for_status()
 
         try:
-            logger.debug('API Response - {data}'.format(
-                data=pprint.pformat(result.json())
-            ))
             return self.post_response(result.json())
 
         except Exception as e:
